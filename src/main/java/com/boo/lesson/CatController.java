@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -44,6 +45,13 @@ public class CatController {
         final Cat catById = catService.getCatById(1);
         model.addAttribute("cat", catById);
         return "cat";
+    }
+
+    @GetMapping("/get-all-cats")
+    public String getAllCats(Model model) {
+        final List<Cat> allCats = catService.getAllCats();
+        model.addAttribute("allCats", allCats);
+        return "getAllCats";
     }
 
   /*  @PostMapping("/cat")
